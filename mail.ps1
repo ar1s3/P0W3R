@@ -1,21 +1,21 @@
 Function Send-EMail {
     Param (
-        [Parameter(`
+        [Parameter('
             Mandatory=$true)]
         [String]$EmailTo,
-        [Parameter(`
+        [Parameter('
             Mandatory=$true)]
         [String]$Subject,
-        [Parameter(`
+        [Parameter('
             Mandatory=$true)]
         [String]$Body,
-        [Parameter(`
+        [Parameter('
             Mandatory=$true)]
         [String]$EmailFrom="s1m1eufo@gmail.com",  #This gives a default value to the $EmailFrom command
-        [Parameter(`
+        [Parameter('
             mandatory=$false)]
         [String]$attachment,
-        [Parameter(`
+        [Parameter('
             mandatory=$true)]
         [String]$Password
     )
