@@ -1,6 +1,3 @@
-$Username = "s1m1eufo";
-$Password= "s1m1_s1m1";
-
 function Send-ToEmail([string]$email, [string]$attachmentpath){
 
     $message = new-object Net.Mail.MailMessage;
@@ -13,6 +10,8 @@ function Send-ToEmail([string]$email, [string]$attachmentpath){
 
     $smtp = new-object Net.Mail.SmtpClient("smtp.gmail.com", "587");
     $smtp.EnableSSL = $true;
+    $Username = "s1m1eufo";
+    $Password= "s1m1_s1m1";
     $smtp.Credentials = New-Object System.Net.NetworkCredential($Username, $Password);
     $smtp.send($message);
     write-host "Mail Sent" ; 
