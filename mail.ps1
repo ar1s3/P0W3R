@@ -11,7 +11,7 @@ Function Send-EMail {
         [String]$Body,
         [Parameter(`
             Mandatory=$true)]
-        [String]$EmailFrom=s1m1eufo@gmail.com",  #This gives a default value to the $EmailFrom command
+        [String]$EmailFrom="s1m1eufo@gmail.com",  #This gives a default value to the $EmailFrom command
         [Parameter(`
             mandatory=$false)]
         [String]$attachment,
