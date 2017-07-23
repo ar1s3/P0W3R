@@ -1,20 +1,36 @@
-function Send-ToEmail([string]$email, [string]$attachmentpath){
+Function Send-EMail {
+    Param (
+        [Parameter(`
+            Mandatory=$true)]
+        [String]$EmailTo,
+        [Parameter(`
+            Mandatory=$true)]
+        [String]$Subject,
+        [Parameter(`
+            Mandatory=$true)]
+        [String]$Body,
+        [Parameter(`
+            Mandatory=$true)]
+        [String]$EmailFrom="myself@gmail.com",  #This gives a default value to the $EmailFrom command
+        [Parameter(`
+            mandatory=$false)]
+        [String]$attachment,
+        [Parameter(`
+            mandatory=$true)]
+        [String]$Password
+    )
 
-    $message = new-object Net.Mail.MailMessage;
-    $message.From = "s1m1eufo@gmail.com";
-    $message.To.Add($email);
-    $message.Subject = "subject text here...";
-    $message.Body = "body text here...";
-    $attachment = New-Object Net.Mail.Attachment($attachmentpath);
-    $message.Attachments.Add($attachment);
+        $SMTPServer = "smtp.gmail.com" 
+        $SMTPMessage = New-Object System.Net.Mail.MailMessage($EmailFrom,$EmailTo,$Subject,$Body)
+        if ($attachment -ne $null) {
+            $SMTPattachment = New-Object System.Net.Mail.Attachment($attachment)
+            $SMTPMessage.Attachments.Add($STMPattachment)
+        }
+        $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587) 
+        $SMTPClient.EnableSsl = $true 
+        $SMTPClient.Credentials = New-Object System.Net.NetworkCredential($EmailFrom.Split("@")[0], $Password); 
+        $SMTPClient.Send($SMTPMessage)
+        Remove-Variable -Name SMTPClient
+        Remove-Variable -Name Password
 
-    $smtp = new-object Net.Mail.SmtpClient("smtp.gmail.com", "587");
-    $smtp.EnableSSL = $true;
-    $Username = "s1m1eufo";
-    $Password= "s1m1_s1m1";
-    $smtp.Credentials = New-Object System.Net.NetworkCredential($Username, $Password);
-    $smtp.send($message);
-    write-host "Mail Sent" ; 
-    $attachment.Dispose();
- }
-Send-ToEmail  -email "reciever@gmail.com" -attachmentpath $path;
+} #End Function Send-EMail
