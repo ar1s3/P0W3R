@@ -1,10 +1,10 @@
-$Username = "MyUserName";
-$Password= "MyPassword";
+$Username = "s1m1eufo";
+$Password= "s1m1_s1m1";
 
 function Send-ToEmail([string]$email, [string]$attachmentpath){
 
     $message = new-object Net.Mail.MailMessage;
-    $message.From = "YourName@gmail.com";
+    $message.From = "s1m1eufo@gmail.com";
     $message.To.Add($email);
     $message.Subject = "subject text here...";
     $message.Body = "body text here...";
